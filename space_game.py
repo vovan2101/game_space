@@ -5,6 +5,7 @@ from stats import Stats
 from scores import Scores
 
 
+
 def run():
     pygame.init()
     screen = pygame.display.set_mode((700, 800))
@@ -18,12 +19,11 @@ def run():
     sc = Scores(screen, stats)
 
     while True:
-        controls.events(screen, gun, bullets) 
+        controls.events(screen, gun, bullets)
         if stats.run_game:
             gun.update_gun()
             controls.update(bg_color, screen, stats, sc, gun, inos, bullets)
-            controls.update_bullets(inos, bullets, screen, stats, sc)
-            controls.update_inos(gun, inos, stats, screen, bullets)
- 
+            controls.update_bullets(screen, stats, sc, inos, bullets)
+            controls.update_inos(stats, screen, sc, gun, inos, bullets)
 
 run()
